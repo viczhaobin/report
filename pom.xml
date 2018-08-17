@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hanthink</groupId>
+  <artifactId>report-master</artifactId>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  <name>report-master Maven Webapp</name>
+  <url>https://github.com/viczhaobin/report-master</url>
+  
+  <properties>
+        <spring.version>4.3.2.RELEASE</spring.version>
+        <javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
+        <junit.version>4.11</junit.version>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- Servlet Library -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>${javax.servlet.servlet-api.version}</version>
+        <scope>provided</scope>
+    </dependency>
+    
+    <!-- Spring dependencies -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    
+  </dependencies>
+  
+  
+  <build>
+    <finalName>report-master</finalName>
+  </build>
+</project>
