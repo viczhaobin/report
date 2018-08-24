@@ -13,6 +13,7 @@
 	<!-- 扫描controller（controller层注入） -->
     <context:component-scan base-package="com.hanthink.report.user.controller"/>
     <context:component-scan base-package="com.hanthink.report.common.controller"/>
+    <context:component-scan base-package="com.hanthink.report.production.controller"/>
 
 	<!-- 对模型视图添加前后缀 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

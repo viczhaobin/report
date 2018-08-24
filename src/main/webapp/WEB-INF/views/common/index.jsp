@@ -15,7 +15,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <head>
 <base href="<%=basePath%>">
 <meta charset="utf-8"/>
-<title>Metronic | Admin Dashboard Template</title>
+<title>Report</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="" name="description"/>
@@ -146,6 +146,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<i class="fa fa-home"></i><span class="title"> 首页 </span><span
 						class="selected"> </span>
 					</a>
+					
+					<ul class="sub-menu"></ul>
 				</li>
 				
 				<li class="">
@@ -158,9 +160,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					</span>
 					</a>
 					<ul class="sub-menu">
-						<li>
-							<a href="rest/dashboard" id="btn-dashboard">
-							生产日报查询</a>
+						<li class="active">
+							<a href="rest/production_summery">
+							产量统计查询</a>
 						</li>
 						<li>
 							<a href="rest/link">
@@ -350,16 +352,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<div class="col-md-12">
 					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 					<h3 class="page-title">
-					Dashboard <small>statistics and more</small>
+					仪表盘 <small>statistics and more</small>
 					</h3>
 					<ul class="page-breadcrumb breadcrumb">
 						<li>
 							<i class="fa fa-home"></i>
-							<a href="index.html">Home</a>
+							<a href="index.html">首页</a>
 							<i class="fa fa-angle-right"></i>
 						</li>
 						<li>
-							<a href="#">Dashboard</a>
+							<a href="#">仪表盘</a>
 						</li>
 
 						<!--

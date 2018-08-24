@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    a{
+      text-decoration: none;
+      color: black;
+    }
+    #menu{
+      width: 100%;
+      height: 20px;
+      background: gainsboro;
+    }
+    ul li{
+      list-style: none;
+      float: left;
+      padding-left: 20px;
+      background-color: whitesmoke;
+    }
+    .active {
+      color: white;
+      background-color: black;
+    }
+    .none {
+      background-color: whitesmoke;
+    }
+  </style>
+</head>
+<body>
+<ul id="menu">
+  <li>
+      <a href="#" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" >首页</a>
+      <a href="#" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" >直播</a>
+</li>
+  <li><a href="#" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" >直播</a></li>
+  <li><a href="#" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" >新闻</a></li>
+  <li><a href="#" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" >关于</a></li>
+</ul>
+<script src="assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script>
+  $('#menu li a').click(function () {
+    var f = this;
+    $('#menu li a').each(function () {
+      if(this.className = this == f)
+      {
+        $(this).addClass("active");
+      }
+    });
+  });
+</script>
+</body>
+</html>
