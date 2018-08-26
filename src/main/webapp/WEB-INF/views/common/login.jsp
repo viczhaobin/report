@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -65,6 +67,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				 Enter any username and password.
 			</span>
 		</div>
+		
+		<c:if test="${not empty param.error}">
+            <div class="alert alert-danger">
+                <span>
+				 	${param.error}
+				</span>	
+            </div>
+        </c:if>
 		<div class="form-group">
 			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 			<label class="control-label visible-ie8 visible-ie9">Username</label>

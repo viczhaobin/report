@@ -205,7 +205,7 @@ var Index = function () {
             }
 
             function showTooltip(title, x, y, contents) {
-                $('<div id="tooltip" class="chart-tooltip"><div class="date">' + title + '<\/div><div class="label label-danger">²úÁ¿: ' + x + '<\/div><div class="label label-success">´ï²úÂÊ: ' + (30*x/y).toFixed(0) + '%<\/div><\/div>').css({
+                $('<div id="tooltip" class="chart-tooltip"><div class="date">' + title + '<\/div><div class="label label-danger">äº§é‡: ' + x + '<\/div><div class="label label-success">è¾¾äº§ç‡: ' + (30*x/y).toFixed(0) + '%<\/div><\/div>').css({
                     position: 'absolute',
                     display: 'none',
                     top: y - 100,
@@ -307,10 +307,10 @@ var Index = function () {
 
                 var plot_statistics = $.plot($("#site_statistics"), [{
                         data: pageviews,
-                        label: "Êµ¼Ê²úÁ¿"
+                        label: "å®é™…äº§é‡"
                     }, {
                         data: visitors,
-                        label: "¼Æ»®²úÁ¿"
+                        label: "è®¡åˆ’äº§é‡"
                     }
                 ], {
                     series: {
@@ -361,7 +361,7 @@ var Index = function () {
                             var x = item.datapoint[0].toFixed(2),
                                 y = item.datapoint[1].toFixed(2);
 
-                            showTooltip('2018Äê8ÔÂ', item.pageX, item.pageY, item.series.label + " of " + x + " = " + y);
+                            showTooltip('2018å¹´8æœˆ', item.pageX, item.pageY, item.series.label + " of " + x + " = " + y);
                         }
                     } else {
                         $("#tooltip").remove();
@@ -512,7 +512,7 @@ var Index = function () {
                             $("#tooltip").remove();
                             var x = item.datapoint[0].toFixed(2),
                                 y = item.datapoint[1].toFixed(2);
-                            showTooltip2('2018Äê8ÔÂ', item.pageX, item.pageY, x);
+                            showTooltip2('2018å¹´8æœˆ', item.pageX, item.pageY, x);
                         }
                     }
                 });

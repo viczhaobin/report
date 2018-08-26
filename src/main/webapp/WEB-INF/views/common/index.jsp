@@ -142,7 +142,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				-->
 
 				<li class="start active">
-					<a href="rest/dashboard" id="btn-dashboard">
+					<a href="rest/page/dashboard" id="btn-dashboard">
 						<i class="fa fa-home"></i><span class="title"> 首页 </span><span
 						class="selected"> </span>
 					</a>

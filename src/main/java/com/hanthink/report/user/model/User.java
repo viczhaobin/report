@@ -2,13 +2,8 @@ package com.hanthink.report.user.model;
 
 import java.util.Date;
 
-/**
- * 用户模型
- * 
- * @author StarZou
- * @since 2014年7月5日 下午12:07:20
- **/
 public class User {
+	
     private Long id;
 
     private String username;
@@ -27,7 +22,7 @@ public class User {
         this.username = username;
         this.password = password;
     }
-
+    
     public Long getId() {
         return id;
     }
@@ -67,10 +62,4 @@ public class User {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
-    @Override
-    public String toString() {
-        return "User [id=" + id + ", username=" + username + ", password=" + password + ", state=" + state + ", createTime=" + createTime + "]";
-    }
-
 }
