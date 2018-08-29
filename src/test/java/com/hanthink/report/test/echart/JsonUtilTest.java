@@ -1,17 +1,13 @@
-package com.hanthink.report.production.controller;
+package com.hanthink.report.test.echart;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.junit.Test;
 
-import com.alibaba.fastjson.JSON;
 import com.github.abel533.echarts.AxisPointer;
 import com.github.abel533.echarts.Grid;
 import com.github.abel533.echarts.Legend;
@@ -28,43 +24,28 @@ import com.github.abel533.echarts.code.PointerType;
 import com.github.abel533.echarts.code.Trigger;
 import com.github.abel533.echarts.code.X;
 import com.github.abel533.echarts.data.LineData;
-import com.github.abel533.echarts.json.GsonUtil;
 import com.github.abel533.echarts.series.Bar;
 import com.github.abel533.echarts.series.Series;
-import com.hanthink.report.production.service.ProductionReportService;
+import com.github.abel533.echarts.util.EnhancedOption;
+import com.hanthink.report.core.feature.test.TestSupport;
+import com.hanthink.report.production.dao.ProductionReportMapper;
 
-/**
-* @author 作者 zhaobin
-* @version 创建时间：2018年8月23日 上午12:33:03
-* 类说明
-*/
 
-@Controller
-public class ProdutctionController {
-	
+public class JsonUtilTest extends TestSupport {
+
 	@Resource
-	private ProductionReportService productionReportService;
+	ProductionReportMapper productionReportMapper;
 	
-	@RequestMapping("/production_summery")
-    public String productionSummery() {
-		
-        return "production/production_summery";
-    }
-	
-	
-	@RequestMapping("/getSelectProductionSummery")
-	@ResponseBody
-	public String getSelectProductionSummery() {
-		//获取数据
-		
-		int dataMap[][][] = new int[3][12][31];
+	@Test
+	public void testJsonUtil () {
+		Integer dataMap[][][] = new Integer[3][12][31];
 		
 		HashMap<String,Object> map = new HashMap<String,Object>();
         map.put("cal_type", "daily");
         
         ArrayList<HashMap> rs;
         try {
-        	rs = productionReportService.selectProductionSummery(map);
+        	rs = productionReportMapper.selectProductionSummery(map);
 	        if (rs != null && rs.size()>0) {
 	        	for(int i=0;i<rs.size();i++) {
 	        		HashMap rsi = rs.get(i);
@@ -80,7 +61,7 @@ public class ProdutctionController {
 		        		dataMap[0][monthNum-1][dayNum-1] = actualQty;
 		        	} else if ("PS".equals(target)) {
 		        		dataMap[1][monthNum-1][dayNum-1] = actualQty;
-		        	} else if ("TFS".equals(target)) {
+		        	} else if ("PS".equals(target)) {
 		        		dataMap[2][monthNum-1][dayNum-1] = actualQty;
 		        	}
 	        	}
@@ -92,7 +73,7 @@ public class ProdutctionController {
         }
         
 		//设置echart属性
-        Option option = new Option();
+        EnhancedOption option = new EnhancedOption();
         
         Option baseOption = new Option();
 		
@@ -105,16 +86,16 @@ public class ProdutctionController {
 		baseOption.timeline(timeLine);
 		
 		Title title = new Title();
-		title.subtext("production count");
+		title.subtext("产量统计");
 		baseOption.title(title);
 		
 		baseOption.tooltip();
 
 		Legend legend = new Legend();
 		legend.x(X.right);
-		legend.data("BS","PS","TFS");
-		legend.selected("PS", false);
-		legend.selected("TFS", false);
+		legend.data("焊装车间","涂装车间","总装车间");
+		legend.selected("涂装车间", false);
+		legend.selected("总装车间", false);
 		baseOption.legend(legend);
 		
 		baseOption.calculable(true);
@@ -140,45 +121,26 @@ public class ProdutctionController {
 		xAxis.splitLine(new SplitLine().show(false));
 		
 		ValueAxis yAxis = new ValueAxis();
-		yAxis.name("actual Quantity");
+		yAxis.name("产量(台)");
 		baseOption.xAxis(xAxis);
 		baseOption.yAxis(yAxis);
 		
-		baseOption.series(new Bar("BS"),new Bar("PS"),new Bar("TFS"));
+		baseOption.series(new Bar("焊装车间"),new Bar("涂装车间"),new Bar("总装车间"));
 		
 		List<Option> options = new ArrayList<>();
 		for(int i=0;i<12;i++)
 		{
 			Option _option = new Option();
-			_option.title("2018-" + i + " Production Summery");
+			_option.title("2018年" + i + "月产量统计");
+			List<Series> _series = new ArrayList<>();
+			Series<Bar> s1 = new Bar().data(dataMap[0][i]);
+			Series<Bar> s2 = new Bar().data(dataMap[1][i]);
+			Series<Bar> s3 = new Bar().data(dataMap[2][i]);
+			_series.add(s1);
+			_series.add(s2);
+			_series.add(s3);
 			
-			Bar bar = new Bar();
-			
-			bar.name("BS").data(dataMap[0][i][0],dataMap[0][i][1],dataMap[0][i][2],dataMap[0][i][3],dataMap[0][i][4],dataMap[0][i][5],
-					dataMap[0][i][6],dataMap[0][i][7],dataMap[0][i][8],dataMap[0][i][9],dataMap[0][i][10],dataMap[0][i][11],
-					dataMap[0][i][12],dataMap[0][i][13],dataMap[0][i][14],dataMap[0][i][15],dataMap[0][i][16],dataMap[0][i][17],
-					dataMap[0][i][18],dataMap[0][i][19],dataMap[0][i][20],dataMap[0][i][21],dataMap[0][i][22],dataMap[0][i][23],
-					dataMap[0][i][24],dataMap[0][i][25],dataMap[0][i][26],dataMap[0][i][27],dataMap[0][i][28],dataMap[0][i][29],dataMap[0][i][30]
-					);
-			_option.series(bar);
-			
-			bar = new Bar();
-			bar.name("PS").data(dataMap[1][i][0],dataMap[1][i][1],dataMap[1][i][2],dataMap[1][i][3],dataMap[1][i][4],dataMap[1][i][5],
-					dataMap[1][i][6],dataMap[1][i][7],dataMap[1][i][8],dataMap[1][i][9],dataMap[1][i][10],dataMap[1][i][11],
-					dataMap[1][i][12],dataMap[1][i][13],dataMap[1][i][14],dataMap[1][i][15],dataMap[1][i][16],dataMap[1][i][17],
-					dataMap[1][i][18],dataMap[1][i][19],dataMap[1][i][20],dataMap[1][i][21],dataMap[1][i][22],dataMap[1][i][23],
-					dataMap[1][i][24],dataMap[1][i][25],dataMap[1][i][26],dataMap[1][i][27],dataMap[1][i][28],dataMap[1][i][29],dataMap[1][i][30]
-					);
-			_option.series(bar);
-			
-			bar = new Bar();
-			bar.name("TFS").data(dataMap[2][i][0],dataMap[2][i][1],dataMap[2][i][2],dataMap[2][i][3],dataMap[2][i][4],dataMap[2][i][5],
-					dataMap[2][i][6],dataMap[2][i][7],dataMap[2][i][8],dataMap[2][i][9],dataMap[2][i][10],dataMap[2][i][11],
-					dataMap[2][i][12],dataMap[2][i][13],dataMap[2][i][14],dataMap[2][i][15],dataMap[2][i][16],dataMap[2][i][17],
-					dataMap[2][i][18],dataMap[2][i][19],dataMap[2][i][20],dataMap[2][i][21],dataMap[2][i][22],dataMap[2][i][23],
-					dataMap[2][i][24],dataMap[2][i][25],dataMap[2][i][26],dataMap[2][i][27],dataMap[2][i][28],dataMap[2][i][29],dataMap[2][i][30]
-					);
-			_option.series(bar);
+			_option.series(_series);
 			
 			options.add(_option);
 		}
@@ -186,8 +148,6 @@ public class ProdutctionController {
 		
 		option.options(options);
 		
-		String optionJson = GsonUtil.format(option); 
-		
-		return optionJson;
+		option.view();
 	}
 }

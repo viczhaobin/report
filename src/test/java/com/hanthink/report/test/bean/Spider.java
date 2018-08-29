@@ -35,13 +35,11 @@ public class Spider implements BeanNameAware, BeanFactoryAware, ApplicationConte
         return data;
     }
 	
-	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 		System.out.println("Spider.postProcessBeforeInitialization");
         return bean;
 	}
 
-	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 		System.out.println("Spider.postProcessAfterInitialization");
         return bean;
@@ -52,7 +50,6 @@ public class Spider implements BeanNameAware, BeanFactoryAware, ApplicationConte
      *
      * @throws Exception
      */
-	@Override
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("Spider.afterPropertiesSet");
 	}
@@ -63,7 +60,6 @@ public class Spider implements BeanNameAware, BeanFactoryAware, ApplicationConte
      * @param applicationContext
      * @throws BeansException
      */
-	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
         System.out.println("Spider.setApplicationContext");		
@@ -75,7 +71,6 @@ public class Spider implements BeanNameAware, BeanFactoryAware, ApplicationConte
      * @param beanFactory
      * @throws BeansException
      */
-	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
 		this.beanFactory = beanFactory;
         System.out.println("Spider.setBeanFactory");
@@ -86,7 +81,6 @@ public class Spider implements BeanNameAware, BeanFactoryAware, ApplicationConte
      *
      * @param name
      */
-	@Override
 	public void setBeanName(String name) {
 		this.beanName = name;
         System.out.println("Spider.setBeanName");

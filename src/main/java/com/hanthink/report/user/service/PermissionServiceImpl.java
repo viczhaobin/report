@@ -22,7 +22,6 @@ public class PermissionServiceImpl extends GenericServiceImpl<Permission, Long> 
 	@Resource
     private PermissionMapper permissionMapper;
 	
-	@Override
 	public List<Permission> selectPermissionsByRoleId(Long roleId) {
 		return permissionMapper.selectPermissionsByRoleId(roleId);
 	}

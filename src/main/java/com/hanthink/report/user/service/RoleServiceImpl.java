@@ -22,7 +22,6 @@ public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements R
 	@Resource
     private RoleMapper roleMapper;
 	
-	@Override
 	public List<Role> selectRolesByUserId(Long userId) {
 		return roleMapper.selectRolesByUserId(userId);
 	}

@@ -5,6 +5,10 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <dependent-module archiveName="ECharts-3.0.0.5.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ECharts-master/ECharts-master">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="report-master"/>
         <property name="java-output-path" value="/report-master/target/classes"/>
     </wb-module>
