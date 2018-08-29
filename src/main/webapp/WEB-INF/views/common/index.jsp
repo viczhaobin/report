@@ -53,7 +53,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
 		<a class="navbar-brand" href="index.html">
-		<img src="assets/img/logo.png" alt="logo" class="img-responsive"/>
+		<img src="app/images/HanThink-001.png" alt="logo" class="img-responsive"/>
 		</a>
         <!-- END LOGO -->
         

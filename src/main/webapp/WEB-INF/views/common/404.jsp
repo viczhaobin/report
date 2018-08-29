@@ -32,9 +32,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN THEME STYLES -->
-<link href="assets/css/metronic/style/style-metronic.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/metronic/style/style.css" rel="stylesheet" type="text/css" />
-<link href="assets/plugins/bootstrap/css/style-responsive.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/plugins.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
 <link href="assets/css/pages/error.css" rel="stylesheet" type="text/css" />
@@ -49,9 +49,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
         <div class="col-md-12 page-404">
             <div class="number">404</div>
             <div class="details">
-                <h3>Oops! You're lost.</h3>
+                <h3>抱歉! 访问丢失.</h3>
                 <p>
-                    We can not find the page you're looking for.<br /> <a href="<%=basePath%>">Return home</a> or try the search bar below.
+                    	我们无法找到您要访问的界面,请联系管理员.<br /> <a href="<%=basePath%>">返回主页</a> 或者尝试在下面的框中输入搜索.
                 </p>
                 <form action="#">
                     <div class="input-group input-medium">

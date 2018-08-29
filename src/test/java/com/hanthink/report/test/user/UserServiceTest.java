@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import org.junit.Test;
+
 import com.hanthink.report.core.feature.test.TestSupport;
 import com.hanthink.report.core.util.ApplicationUtils;
 import com.hanthink.report.user.model.User;
@@ -21,10 +23,10 @@ public class UserServiceTest extends TestSupport {
 	@Resource
     private UserService userService;
 	
-	//@Test
+	@Test
 	public void test_insert() {
         User model = new User();
-        model.setUsername("zhaobin");
+        model.setUsername("zhaobin1");
         model.setPassword(ApplicationUtils.sha256Hex("123456"));
         model.setCreateTime(new Date());
         userService.insert(model);
